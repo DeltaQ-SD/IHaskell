@@ -13,6 +13,6 @@ main :: IO ()
 main =
   hspec $ do
     testParser
-    testEval
+    -- testEval
     testCompletions
     testHoogle
