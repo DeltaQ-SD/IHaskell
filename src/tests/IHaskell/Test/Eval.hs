@@ -76,13 +76,13 @@ evaluationComparing comparison string = do
 testEval :: Spec
 testEval =
   describe "Code Evaluation" $ do
-    it "gets rid of the test failure with Nix" $
+{-    it "gets rid of the test failure with Nix" $
       let
         throwAway :: String -> [String] -> IO ()
         throwAway string _ =
           evaluationComparing (const $ shouldBe True True) string
       in throwAway "True" ["True"]
-
+-}
     it "evaluates expressions" $ do
       "3" `becomes` ["3"]
       "3+5" `becomes` ["8"]
