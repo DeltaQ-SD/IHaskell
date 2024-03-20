@@ -1,6 +1,6 @@
 # should match the GHC version of the stack.yaml resolver
 # checked in CI
-ARG GHC_VERSION=9.4.5
+ARG GHC_VERSION=9.6.4
 
 FROM haskell:${GHC_VERSION} AS ihaskell_base
 
@@ -39,7 +39,7 @@ COPY LICENSE LICENSE
 RUN stack install ihaskell --local-bin-path ./bin/
 
 # Save resolver used to build IHaskell
-RUN sed -n 's/resolver: \(.*\)/\1/p' stack.yaml | tee resolver.txt
+RUN sed -n 's/resolver: \(.*\)#.*/\1/p' stack.yaml | tee resolver.txt
 
 # Save third-party data files
 RUN mkdir /data && \
